@@ -1,45 +1,48 @@
 "use strict"
+function createButtons() {
+    let buttons = [
+        {
+            name: "bold",
+            class: "icon-bold"
+        },
+        {
+            name: "underline",
+            class: "icon-underline"
+        },
+        {
+            name: "italic",
+            class: "icon-italic"
+        },
+        {
+            name: "image",
+            class: "icon-picture"
+        },
+        {
+            name: "cut",
+            class: "icon-scissors"
+        },
+        {
+            name: "undo",
+            class: "icon-undo"
+        },
+        {
+            name: "redo",
+            class: "icon-cw"
+        },
+        {
+            name: "delete",
+            class: "icon-cancel-circle"
+        }
+    ]
 
-let buttons = [
-    {
-        name: "bold",
-        class: ["fa", "fa-bold"]
-    },
-    {
-        name: "underline",
-        class: ["fa", "fa-underline"]
-    },
-    {
-        name: "italic",
-        class: ["fa", "fa-italic"]
-    },
-    {
-        name: "cut",
-        class: ["fa", "fa-sessiors"]
-    },
-    {
-        name: "undo",
-        class: ["fa", "fa-undo"]
-    },
-    {
-        name: "redo",
-        class: ["fas", "fa-redo"]
-    },
-    {
-        name: "delete",
-        class: ["fas", "fa-trash-alt"]
-    }
-]
-
-function createButtons(obj) {
     let div = document.createElement("div");
-    for (let i = 0; i < obj.length; i++) {
+    for (let i = 0; i < buttons.length; i++) {
         let button = document.createElement("button");
-        button.classList.add(obj[i].class[0], obj[i].class[1]);
-        button.setAttribute("onclick", `document.execCommand("${obj[i].name}","false", "")`)
+        button.classList.add(buttons[i].class);
+        button.setAttribute("onclick", `document.execCommand("${buttons[i].name}",${false}, "")`)
         div.appendChild(button)
     }
     return div.innerHTML
 }
 
-export default createButtons(buttons);
+export default createButtons;
