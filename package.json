@@ -1,0 +1,14 @@
+{
+  "name": "wysiwyg",
+  "version": "1.0.0",
+  "description": "A wysiwyg editor",
+  "main": "index.js",
+  "author" : "Manash athparia",
+  "scripts": {
+   "start" : "parcel src/index.html"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "parcel-bundler": "^1.10.3"
+  }
+}

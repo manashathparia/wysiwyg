@@ -1,0 +1,17 @@
+.editor{
+    display: none
+}
+.editorDiv{
+    width: 90%;
+    height: 300px;
+    border: 1px solid;
+    margin: auto
+}
+.toolbar{
+    height: 7%;
+    border-bottom: 1px solid;
+}
+.editable{
+    height: 93%;
+    
+}
