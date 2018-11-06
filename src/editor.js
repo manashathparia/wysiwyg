@@ -1,20 +1,35 @@
 import buttons from "./buttons";
 
-function wysiwyg(options){
-    let editor = document.querySelector(".editor");
-    let body = document.querySelector("body");
+function makeNode(options){
+    let node = document.createElement(options.name);
+    for(let i = 0; i < options.class.length; i++){
+        node.classList.add(options.class[i])
+    }
+    if(options.appendChild){
+        let parentElement = document.querySelector(`.${options.appendChild}`)
+        parentElement.appendChild(node)
+    }
+    if(options.insertBefore){
+        let element = document.querySelector(`.${options.insertBefore}`);
+        element.parentNode.insertBefore(node, element.nextSibling)
+    }
+    return node;
+}
 
-    (function insertDiv(prevElement) {
-        let editorDiv = document.createElement("div");
-        editorDiv.classList.add("editorDiv")
-        editor.parentNode.insertBefore(editorDiv, editor.nextSibling)
-    })(editor);
+    (function insertDiv() {
+        makeNode({
+            name: "div",
+            class: ["editorDiv"],
+            insertBefore: "editor"
+        })
+    })();
 
     (function insertToolbar() {
-        let editorDiv = document.querySelector(".editorDiv");
-        let toolbar = document.createElement("div");
-        toolbar.classList.add("toolbar");
-        editorDiv.appendChild(toolbar)
+        makeNode({
+            name: "div",
+            class: ["toolbar"],
+            appendChild: "editorDiv"
+        })
     })();
 
     (function divEditable() {
@@ -26,6 +41,4 @@ function wysiwyg(options){
         toolbar.parentNode.insertBefore(divEditable, toolbar.nextSibling);
     })()
 
-    document.querySelector(".toolbar").innerHTML = buttons(options)
-}
-wysiwyg()
+    document.querySelector(".toolbar").innerHTML = buttons()
