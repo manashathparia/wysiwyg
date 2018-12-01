@@ -27,4 +27,4 @@ import makeNode from "./makenode";
         })
     })()
 
-    document.querySelector(".toolbar").innerHTML = buttons()
+document.querySelector(".toolbar").innerHTML = buttons()
